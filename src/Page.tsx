@@ -303,6 +303,7 @@ function Page() {
             fontSize="large"
             sx={{ padding: 4, color: "#ffffff" }}
             onClick={() => {
+              recordingIdRef.current += 1;
               setIsRecording(false);
               setisMaincomponent(true);
             }}
