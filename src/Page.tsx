@@ -112,9 +112,16 @@ function Page() {
 
   const startRecording = async () => {
     try {
+      
+      if (soundOutput) {
+        soundOutput.pause();
+        soundOutput.currentTime = 0;
+      }
       recordingIdRef.current += 1;
-      // const currentRecordingId = recordingIdRef.current;
       setSoundOutput(null);
+      
+      // const currentRecordingId = recordingIdRef.current;
+
       setIsListeningSuccess(false);
       setTextinputrecord("");
       setTextoutputrecord("");
