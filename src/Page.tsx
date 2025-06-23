@@ -275,7 +275,7 @@ function Page() {
   return (
     <Box
       sx={{
-        height: "100vh",
+        height: "calc(var(--vh, 1vh) * 100)", 
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -384,6 +384,7 @@ function Page() {
                 </Typography>
                 <Box
                   sx={{
+                    cursor: "pointer",
                     display: "flex",
                     bgcolor: "#15172b",
                     border: "1px solid #2c2f4a",
