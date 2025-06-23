@@ -90,9 +90,7 @@ const languageOptions = [
 ];
 
 function Page() {
-  const mockInput =
-    "สวัสดี สวัสดี สวัสดี Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, temporibus? Ipsum iusto quia incidunt saepe perspiciatis officia provident eligendi dolore, beatae necessitatibus. Aperiam ducimus hic fugiat sapiente quisquam vel, voluptas possimus cum sit odio illum culpa architecto! Numquam cum asperiores optio amet temporibus doloribus dignissimos dolor, veritatis, eius mollitia commodi, itaque aut consectetur eum impedit doloremque id harum nulla veniam provident! Rerum explicabo laboriosam architecto tempore esse deserunt libero deleniti, odio quisquam vitae voluptas illo assumenda dignissimos numquam repellat quam est at, tenetur, impedit labore pariatur. Aliquam dolorem debitis tenetur pariatur expedita reprehenderit vero quis ad veritatis minus, repellat animi?";
-  const mockOutput = "hello hello hello";
+
   const [leftLang, setLeftLang] = useState("th-TH");
   const [rightLang, setRightLang] = useState("en-US");
   const [stream, setStream] = useState<MediaStream | null>(null);
