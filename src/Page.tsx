@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import {
   CardMedia,
   CardContent,
@@ -104,7 +104,7 @@ function Page() {
 
   const inputLang = languageOptions.find((lang) => lang.value === leftLang);
   const outputLang = languageOptions.find((lang) => lang.value === rightLang);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  // const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [soundOutput, setSoundOutput] = useState<HTMLAudioElement | null>(null);
 
   const [textinputrecord, setTextinputrecord] = useState<string>(mockInput);
@@ -137,7 +137,7 @@ function Page() {
         const blob = new Blob(audioChunksRef.current, { type: "audio/webm" });
 
         // Optional: keep in state if UI needs it
-        setAudioBlob(blob);
+        // setAudioBlob(blob);
 
         const formData = new FormData();
         formData.append("audio", blob, "recording.webm");

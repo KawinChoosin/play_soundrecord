@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+
 import React, { useRef, useEffect } from "react";
 
 interface AudioWaveformCanvasProps {
