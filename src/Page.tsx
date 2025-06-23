@@ -287,7 +287,7 @@ function Page() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          bgcolor: "#1b1d36",
+          bgcolor: "#181c35",
         }}
       >
         {!isMaincomponent && (
