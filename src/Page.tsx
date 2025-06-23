@@ -312,10 +312,10 @@ function Page() {
             component="img"
             image="/play_icon.jpg"
             title="logo"
-            sx={{ height: "40%", objectFit: "contain", mt: 2 }}
+            sx={{ height: "33%", objectFit: "contain", mt: 6 }}
           />
           <Box sx={{ display: "flex", justifyContent: "center", mt: -2 }}>
-                 <Typography fontSize={30} fontWeight={600} color="#fa364c">Demo Translate App</Typography>
+                 <Typography fontSize={27} fontWeight={600} color="#fa364c">Demo Translate App</Typography>
           </Box>
      
           </>
@@ -428,14 +428,14 @@ function Page() {
         ) : (
           <CardContent
             sx={{
-              mt: 4,
+              mt: 2,
               height: "20%",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               flexWrap: "wrap",
               px: 2,
-              gap: 4,
+              gap: 3,
             }}
           >
             <FormControl
@@ -454,7 +454,19 @@ function Page() {
                 value={leftLang}
                 label="From"
                 onChange={(e) => setLeftLang(e.target.value)}
-                sx={{ borderRadius: 10, bgcolor: "#ffffff" }}
+                  sx={{
+    borderRadius: 2,
+    bgcolor: "#ffffff",
+    "& .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Remove default border
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Remove blue border on focus
+    },
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Optional: remove border on hover too
+    },
+  }}
                 MenuProps={{
                   anchorOrigin: {
                     vertical: "bottom",
@@ -496,7 +508,19 @@ function Page() {
                 value={rightLang}
                 label="From"
                 onChange={(e) => setRightLang(e.target.value)}
-                sx={{ borderRadius: 10, bgcolor: "#ffffff" }}
+                  sx={{
+    borderRadius: 2,
+    bgcolor: "#ffffff",
+    "& .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Remove default border
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Remove blue border on focus
+    },
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      border: "none", // Optional: remove border on hover too
+    },
+  }}
                 MenuProps={{
                   anchorOrigin: {
                     vertical: "bottom",
@@ -536,8 +560,8 @@ function Page() {
             variant="contained"
             sx={{
               borderRadius: "50%",
-              width: 150,
-              height: 150,
+              width: 125,
+              height: 125,
               minWidth: 0, // prevents MUI from enforcing default button width
               p: 0, // remove padding so icon is centered
               bgcolor: "#fa374a",
