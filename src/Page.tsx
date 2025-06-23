@@ -114,7 +114,7 @@ function Page() {
   const startRecording = async () => {
     try {
       recordingIdRef.current += 1;
-      const currentRecordingId = recordingIdRef.current;
+      // const currentRecordingId = recordingIdRef.current;
       setSoundOutput(null);
       setIsListeningSuccess(false);
       setTextinputrecord('');
