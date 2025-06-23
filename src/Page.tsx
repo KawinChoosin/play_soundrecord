@@ -307,12 +307,18 @@ function Page() {
             </Box>
           </Box>
         ) : isMaincomponent ? (
+          <>
           <CardMedia
             component="img"
             image="/play_icon.jpg"
             title="logo"
-            sx={{ height: "40%", objectFit: "contain", mt: 4 }}
+            sx={{ height: "40%", objectFit: "contain", mt: 2 }}
           />
+          <Box sx={{ display: "flex", justifyContent: "center", mt: -2 }}>
+                 <Typography fontSize={30} fontWeight={600} color="#fa364c">Demo Translate App</Typography>
+          </Box>
+     
+          </>
         ) : null}
         {stream && !isMaincomponent ? (
           <CardContent
