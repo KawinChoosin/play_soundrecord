@@ -109,9 +109,12 @@ function Page() {
   const [textoutputrecord, setTextoutputrecord] = useState<string>('');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const recordingIdRef = useRef(0);
 
   const startRecording = async () => {
     try {
+      recordingIdRef.current += 1;
+      const currentRecordingId = recordingIdRef.current;
       setSoundOutput(null);
       setIsListeningSuccess(false);
       setTextinputrecord('');
@@ -135,6 +138,7 @@ function Page() {
       };
 
       mediaRecorder.onstop = async () => {
+        const thisRecordingId = recordingIdRef.current;
         const blob = new Blob(audioChunksRef.current, { type: "audio/webm" });
 
         // Optional: keep in state if UI needs it
@@ -158,6 +162,7 @@ function Page() {
           if (response.data.status === "COMPLETED") {
             const textinput = response.data.results.transcripts[0].transcript;
             console.log("test textinput ", textinput);
+            if (recordingIdRef.current !== thisRecordingId) return;
             setTextinputrecord(textinput);
             setIsListeningSuccess(true);
             const translateData = new FormData();
@@ -182,6 +187,7 @@ function Page() {
               setIsTranslatingSuccess(true);
               const translatedText = response.data.contents[0]?.text || "";
               // const translatedText = "test test test";
+              if (recordingIdRef.current !== thisRecordingId) return
               setTextoutputrecord(translatedText);
               try {
                 const ttsUrl = `${
@@ -201,6 +207,7 @@ function Page() {
                 // Save sound to state
 
                 setIsTranslatingSuccess(true);
+                if (recordingIdRef.current !== thisRecordingId) return;
                 setSoundOutput(audio);
               } catch (error) {
                 console.error("Error get sound:", error);
