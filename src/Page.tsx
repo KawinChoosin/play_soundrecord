@@ -90,7 +90,6 @@ const languageOptions = [
 ];
 
 function Page() {
-
   const [leftLang, setLeftLang] = useState("th-TH");
   const [rightLang, setRightLang] = useState("en-US");
   const [stream, setStream] = useState<MediaStream | null>(null);
@@ -105,8 +104,8 @@ function Page() {
   // const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [soundOutput, setSoundOutput] = useState<HTMLAudioElement | null>(null);
 
-  const [textinputrecord, setTextinputrecord] = useState<string>('');
-  const [textoutputrecord, setTextoutputrecord] = useState<string>('');
+  const [textinputrecord, setTextinputrecord] = useState<string>("");
+  const [textoutputrecord, setTextoutputrecord] = useState<string>("");
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const recordingIdRef = useRef(0);
@@ -117,8 +116,8 @@ function Page() {
       // const currentRecordingId = recordingIdRef.current;
       setSoundOutput(null);
       setIsListeningSuccess(false);
-      setTextinputrecord('');
-      setTextoutputrecord('');
+      setTextinputrecord("");
+      setTextoutputrecord("");
       const newStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
       });
@@ -187,7 +186,7 @@ function Page() {
               setIsTranslatingSuccess(true);
               const translatedText = response.data.contents[0]?.text || "";
               // const translatedText = "test test test";
-              if (recordingIdRef.current !== thisRecordingId) return
+              if (recordingIdRef.current !== thisRecordingId) return;
               setTextoutputrecord(translatedText);
               try {
                 const ttsUrl = `${
@@ -283,7 +282,7 @@ function Page() {
   return (
     <Box
       sx={{
-        height: "calc(var(--vh, 1vh) * 100)", 
+        height: "calc(var(--vh, 1vh) * 100)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -304,6 +303,10 @@ function Page() {
             sx={{ padding: 4, color: "#ffffff" }}
             onClick={() => {
               recordingIdRef.current += 1;
+              if (soundOutput) {
+                soundOutput.pause();
+                soundOutput.currentTime = 0; // rewind to start
+              }
               setIsRecording(false);
               setisMaincomponent(true);
             }}
