@@ -107,14 +107,17 @@ function Page() {
   // const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [soundOutput, setSoundOutput] = useState<HTMLAudioElement | null>(null);
 
-  const [textinputrecord, setTextinputrecord] = useState<string>(mockInput);
-  const [textoutputrecord, setTextoutputrecord] = useState<string>(mockOutput);
+  const [textinputrecord, setTextinputrecord] = useState<string>('');
+  const [textoutputrecord, setTextoutputrecord] = useState<string>('');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
 
   const startRecording = async () => {
     try {
+      setSoundOutput(null);
       setIsListeningSuccess(false);
+      setTextinputrecord('');
+      setTextoutputrecord('');
       const newStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
       });
