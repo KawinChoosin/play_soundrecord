@@ -1,4 +1,4 @@
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CardMedia,
   CardContent,
@@ -156,7 +156,7 @@ function Page() {
           console.log("Audio response:", response.data);
           if (response.data.status === "COMPLETED") {
             const textinput = response.data.results.transcripts[0].transcript;
-            console.log("test textinput ",textinput);
+            console.log("test textinput ", textinput);
             setTextinputrecord(textinput);
             setIsListeningSuccess(true);
             const translateData = new FormData();
@@ -308,16 +308,17 @@ function Page() {
           </Box>
         ) : isMaincomponent ? (
           <>
-          <CardMedia
-            component="img"
-            image="/play_icon.jpg"
-            title="logo"
-            sx={{ height: "33%", objectFit: "contain", mt: 6 }}
-          />
-          <Box sx={{ display: "flex", justifyContent: "center", mt: -2 }}>
-                 <Typography fontSize={27} fontWeight={600} color="#fa364c">Demo Translate App</Typography>
-          </Box>
-     
+            <CardMedia
+              component="img"
+              image="/play_icon.jpg"
+              title="logo"
+              sx={{ height: "33%", objectFit: "contain", mt: 6 }}
+            />
+            <Box sx={{ display: "flex", justifyContent: "center", mt: -2 }}>
+              <Typography fontSize={27} fontWeight={600} color="#fa364c">
+                Demo Translate App
+              </Typography>
+            </Box>
           </>
         ) : null}
         {stream && !isMaincomponent ? (
@@ -354,8 +355,6 @@ function Page() {
             >
               <Box
                 sx={{
-                  height: "80%",
-                  width: "80%",
                   overflowY: "auto",
                   display: "flex",
                   alignItems: "center",
@@ -395,6 +394,13 @@ function Page() {
                     justifyContent: "center",
                     alignItems: "center",
                     overflow: "hidden", // prevent overflow outside border
+                  }}
+                  onClick={() => {
+                    if (soundOutput) {
+                      soundOutput.play().catch((err) => {
+                        console.error("Playback error:", err);
+                      });
+                    }
                   }}
                 >
                   <Box
@@ -454,19 +460,19 @@ function Page() {
                 value={leftLang}
                 label="From"
                 onChange={(e) => setLeftLang(e.target.value)}
-                  sx={{
-    borderRadius: 2,
-    bgcolor: "#ffffff",
-    "& .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Remove default border
-    },
-    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Remove blue border on focus
-    },
-    "&:hover .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Optional: remove border on hover too
-    },
-  }}
+                sx={{
+                  borderRadius: 2,
+                  bgcolor: "#ffffff",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Remove default border
+                  },
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Remove blue border on focus
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Optional: remove border on hover too
+                  },
+                }}
                 MenuProps={{
                   anchorOrigin: {
                     vertical: "bottom",
@@ -508,19 +514,19 @@ function Page() {
                 value={rightLang}
                 label="From"
                 onChange={(e) => setRightLang(e.target.value)}
-                  sx={{
-    borderRadius: 2,
-    bgcolor: "#ffffff",
-    "& .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Remove default border
-    },
-    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Remove blue border on focus
-    },
-    "&:hover .MuiOutlinedInput-notchedOutline": {
-      border: "none", // Optional: remove border on hover too
-    },
-  }}
+                sx={{
+                  borderRadius: 2,
+                  bgcolor: "#ffffff",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Remove default border
+                  },
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Remove blue border on focus
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    border: "none", // Optional: remove border on hover too
+                  },
+                }}
                 MenuProps={{
                   anchorOrigin: {
                     vertical: "bottom",
